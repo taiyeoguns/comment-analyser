@@ -26,7 +26,7 @@ def create():
     return cc.create(request=request)
 
 
-@app.route('/api/comments', methods=['POST'])
+@app.route('/api/comments', methods=['GET'])
 @cache.cached(timeout=50)
 def read():
     """ retrieves list of comments """
