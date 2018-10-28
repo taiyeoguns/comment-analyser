@@ -1,0 +1,91 @@
+swagger: "2.0"
+info:
+  description: Describes endpoints for Comment Analyser
+  version: "1.0.0"
+  title: Comment Analyser
+consumes:
+  - "application/json"
+produces:
+  - "application/json"
+
+basePath: "/api"
+
+# Paths supported by the server application
+paths:
+  /comments:
+    get:
+      operationId: "app.routes.index.read"
+      tags:
+        - "Comment"
+      summary: "The comments provided by user"
+      description: "Read the list of comments"
+      responses:
+        200:
+          description: "Successful read comments list operation"
+          schema:
+            type: "array"
+            items:
+              properties:
+                id:
+                  type: "string"
+                owner:
+                  type: "string"
+                sku:
+                  type: "string"
+                text:
+                  type: "string"
+                timestamp:
+                  type: "string"
+                tone:
+                  type: "string"
+    post:
+      operationId: "app.routes.index.create"
+      tags:
+        - "Comment"
+      summary: "Add new comment"
+      description: "Create new comment from user"
+      responses:
+        201:
+          description: "Successfully added new comment operation"
+          schema:
+            type: "array"
+            items:
+              properties:
+                id:
+                  type: "string"
+                timestamp:
+                  type: "string"
+    put:
+      operationId: "app.routes.index.update"
+      tags:
+        - "Comment"
+      summary: "Update existing comment"
+      description: "Update existing comment from user"
+      responses:
+        200:
+          description: "Successfully modified existing comment operation"
+          schema:
+            type: "array"
+            items:
+              properties:
+                id:
+                  type: "string"
+                timestamp:
+                  type: "string"
+    delete:
+      operationId: "app.routes.index.delete"
+      tags:
+        - "Comment"
+      summary: "Delete existing comment"
+      description: "Delete existing comment from user"
+      responses:
+        200:
+          description: "Successfully deleted existing comment operation"
+          schema:
+            type: "array"
+            items:
+              properties:
+                id:
+                  type: "string"
+                timestamp:
+                  type: "string"
