@@ -1,6 +1,5 @@
 from os.path import abspath, dirname, join
-from app.services.tone_analyser import ToneAnalyser
-from app.services.database import Database
+from app.services import ToneAnalyser, Database
 from datetime import datetime
 from flask import jsonify
 

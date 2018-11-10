@@ -2,7 +2,7 @@ from app import app
 from flask import request
 from flask_caching import Cache
 
-from app.controllers.comment_controller import CommentController
+from app.controllers import CommentController
 
 # initialize cache
 cache = Cache(config={'CACHE_TYPE': 'simple'})
