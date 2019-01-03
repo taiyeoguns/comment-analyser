@@ -1,51 +1,16 @@
-class Comment:
-    def __init__(self, sku=None, text=None, owner=None):
-        """
-        Constructor to intialise object
-        sku - Number
-        text - String
-        owner - String
-        """
-        self.sku = sku
-        self.text = text
-        self.owner = owner
+from datetime import datetime
+from app import db
 
-    def set_sku(self, sku):
-        """
-        Set sku parameter
-        """
+class Comment(db.Model):
 
-        self.sku = sku
+    __tablename__ = "comments"
 
-    def get_sku(self):
-        """
-        Get sku parameter
-        """
-        return self.sku
-
-    def set_text(self, text):
-        """
-        Set text parameter
-        """
-        self.text = text
-
-    def get_text(self):
-        """
-        Get text parameter
-        """
-        return self.text
-
-    def set_owner(self, owner):
-        """
-        Set owner parameter
-        """
-        self.owner = owner
-
-    def get_owner(self):
-        """
-        Get owner parameter
-        """
-        return self.owner
+    id = db.Column(db.Integer, primary_key=True)
+    sku = db.Column(db.String(25), unique=True)
+    text = db.Column(db.String(50))
+    owner = db.Column(db.String(25))
+    tone = db.Column(db.String(25))
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
 
     def __repr__(self):
         """

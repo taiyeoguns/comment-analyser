@@ -1,7 +1,6 @@
-from app import app
 from flask import request
 from flask_caching import Cache
-
+from app import app
 from app.controllers import CommentController
 
 # initialize cache
