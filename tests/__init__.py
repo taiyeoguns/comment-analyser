@@ -1,4 +1,4 @@
-from flask import Flask
-app = Flask(__name__)
-from app.routes import index
+# from flask import Flask
+# app = Flask(__name__)
+# from app.routes import index
 

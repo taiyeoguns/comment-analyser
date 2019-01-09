@@ -1,6 +1,6 @@
 # Comment Analyser
 
-Simple API to to analyse comments with [Watson](https://www.ibm.com/watson/) [Tone Analyzer](https://console.bluemix.net/catalog/services/tone-analyzer) to determine whether positive or negative tone.
+Simple API to analyse comments with [Watson](https://www.ibm.com/watson/) [Tone Analyzer](https://console.bluemix.net/catalog/services/tone-analyzer) to determine whether positive or negative tone.
 
 Built with Python3, Flask and [Watson Tone Analyzer API](https://watson-api-explorer.ng.bluemix.net/apis/tone-analyzer-v3).
 
@@ -40,6 +40,12 @@ Start the Flask web server by running:
 
 ```sh
 python run.py
+```
+
+or
+
+```sh
+flask run
 ```
 
 Server should usually be started at `http://localhost:5000`

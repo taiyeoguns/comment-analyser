@@ -1,20 +1,40 @@
 import connexion
-from os.path import abspath, dirname, join
 from flask_sqlalchemy import SQLAlchemy
+from flask_caching import Cache
+from config import Config
 
-# add connexion
-app = connexion.FlaskApp(__name__, specification_dir='../')
 
-db_path = join(abspath(dirname(dirname(__file__))), 'database.db')
-app.app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{db_path}'
-app.app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db = SQLAlchemy(app.app)
+db = SQLAlchemy()
+cache = Cache(config={"CACHE_TYPE": "simple"})
 
-# import models before create all
-from app.models import Comment
 
-db.create_all()
+def create_app(cfg=Config):
+    # add connexion
+    app = connexion.FlaskApp(__name__, specification_dir="../")
+    flaskapp = app.app  # get flask app object
 
-from app.routes import index
+    # configure database
+    flaskapp.config.from_object(cfg)
 
-app.add_api('swagger.yml')
+    # initialize database
+    db.init_app(flaskapp)
+
+    # initialize cache
+    cache.init_app(flaskapp)
+
+    from app.routes import routes as routes_bp  # noqa
+
+    flaskapp.register_blueprint(routes_bp)
+
+    # import models before create all
+    from app.models import Comment  # noqa
+
+    with flaskapp.app_context():
+        db.create_all()
+
+    app.add_api("swagger.yml")
+
+    return app
+
+
+flaskapp = create_app().app  # for flask run
