@@ -24,7 +24,7 @@ class CommentController:
         db.session.add(comment)
         db.session.commit()
 
-        return jsonify({"id": str(comment.id), "timestamp": timestamp}), 201
+        return jsonify({"id": str(comment.uuid), "timestamp": timestamp}), 201
 
     def read(self, request):
         """ gets lists of comments in database """
@@ -35,7 +35,7 @@ class CommentController:
         for comment in comments:
             comment_list.append(
                 {
-                    "id": comment.id,
+                    "id": comment.uuid,
                     "sku": comment.sku,
                     "text": comment.text,
                     "owner": comment.owner,

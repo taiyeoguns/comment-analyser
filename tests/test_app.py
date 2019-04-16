@@ -77,8 +77,5 @@ def test_add_new_comment(database, client):
         "/api/comments", data=dict(sku="3", text="not very good", owner="person")
     )
 
-    data = json.loads(response.data)
-
     assert response.status_code == 201
-    assert data["id"] == "3"
     assert Comment.query.count() == 3

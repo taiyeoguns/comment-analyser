@@ -37,6 +37,7 @@ requests==2.20.0
 shellingham==1.2.8
 six==1.11.0
 SQLAlchemy==1.2.13
+SQLAlchemy-Utils==0.33.11
 swagger-spec-validator==2.4.1
 toml==0.10.0
 typed-ast==1.1.1
